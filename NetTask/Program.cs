@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks();
 builder.Services.AddApplicationLayer();
-builder.Services.AddPersistenceLayer();
+builder.Services.AddPersistenceLayer(builder.Configuration);
 #endregion
 
 #region Configure Pipeline
