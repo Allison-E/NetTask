@@ -3,7 +3,7 @@
 /// <summary>
 /// Application form for a program.
 /// </summary>
-internal class ApplicationForm: Entity
+public class ApplicationForm: Entity
 {
     /// <summary>
     /// Foreign key of the program that 
