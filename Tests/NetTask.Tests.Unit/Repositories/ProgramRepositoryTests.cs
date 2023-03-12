@@ -137,8 +137,8 @@ public class ProgramRepositoryTests: IClassFixture<BaseRepositoryFixture>
                     Address = "Abuja, Nigeria",
                     IsRemote = true,
                 },
-                MaximumApplications = 200,
-                MinimumQualification = Qualifications.University,
+                MaxApplications = 200,
+                MinQualification = Qualifications.University,
                 Type = ProgramTypes.Webinar,
             },
         };

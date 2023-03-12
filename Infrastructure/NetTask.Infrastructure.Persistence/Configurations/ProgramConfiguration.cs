@@ -14,8 +14,8 @@ internal class ProgramConfiguration: IEntityTypeConfiguration<Program>
                     ad.Property(a => a.ApplicationOpenDate).ToJsonProperty("ApplicationOpenDate");
                     ad.Property(a => a.ApplicationCloseDate).ToJsonProperty("ApplicationCloseDate");
                     ad.Property(a => a.Duration).ToJsonProperty("Duration");
-                    ad.Property(a => a.MinimumQualification).ToJsonProperty("MinQualification");
-                    ad.Property(a => a.MaximumApplications).ToJsonProperty("MaxApplications");
+                    ad.Property(a => a.MinQualification).ToJsonProperty("MinQualification");
+                    ad.Property(a => a.MaxApplications).ToJsonProperty("MaxApplications");
                     ad.OwnsOne(a => a.Location);
                 });
 

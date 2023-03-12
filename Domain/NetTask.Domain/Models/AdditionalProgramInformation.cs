@@ -38,10 +38,10 @@ public class AdditionalProgramInformation
     /// <summary>
     /// Minimum qualification required for candidates.
     /// </summary>
-    public Qualifications? MinimumQualification { get; set; }
+    public Qualifications? MinQualification { get; set; }
 
     /// <summary>
     /// Maximum number of applications allowed for the program.
     /// </summary>
-    public int? MaximumApplications { get; set; }
+    public int? MaxApplications { get; set; }
 }
