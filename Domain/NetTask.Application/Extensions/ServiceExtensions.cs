@@ -1,4 +1,6 @@
-﻿namespace Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+
+namespace Microsoft.Extensions.DependencyInjection;
 public static class ServiceExtensions
 {
     /// <summary>
@@ -7,6 +9,10 @@ public static class ServiceExtensions
     /// <param name="services"></param>
     public static void AddApplicationLayer(this IServiceCollection services)
     {
-
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddMediatR(config =>
+        {
+            config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
     }
 }
