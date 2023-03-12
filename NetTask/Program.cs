@@ -22,6 +22,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseErrorHandler();
 app.UseCors("MyPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();

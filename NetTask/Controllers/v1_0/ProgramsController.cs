@@ -43,7 +43,7 @@ public class ProgramsController: ControllerBase
     [HttpGet("{id}", Name = "GetProgramById")]
     [ProducesResponseType(typeof(ReadProgramDto), StatusCodes.Status200OK)]
     // Todo: Use custom error object.
-    [ProducesResponseType(typeof(ReadProgramDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetByIdAsync(string id)
     {
         return Ok(await _mediator.Send(new GetProgramByIdQuery(id)));
@@ -56,7 +56,7 @@ public class ProgramsController: ControllerBase
     /// <param name="program">Program</param>
     [HttpPut("{id}")]
     // Todo: Use custom error object.
-    [ProducesResponseType(typeof(ReadProgramDto), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateAsync(string id, [FromBody] UpdateProgramDto program)
     {
         return Ok(await _mediator.Send(new UpdateProgramCommand(id, program)));
