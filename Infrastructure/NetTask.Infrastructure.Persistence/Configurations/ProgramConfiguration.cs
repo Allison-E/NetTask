@@ -21,5 +21,7 @@ internal class ProgramConfiguration: IEntityTypeConfiguration<Program>
 
         builder.Property(p => p.ETag)
             .IsETagConcurrency();
+
+        builder.HasKey(p => p.Id);
     }
 }
