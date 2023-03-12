@@ -20,6 +20,7 @@ builder.Services.AddPersistenceLayer(builder.Configuration);
 #region Configure Pipeline
 var app = builder.Build();
 
+var dbCreating = app.CreateDatabaseAsync();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseErrorHandler();
@@ -28,5 +29,6 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseHealthChecks("/health");
 app.MapControllers();
+await dbCreating;
 app.Run();
 #endregion
