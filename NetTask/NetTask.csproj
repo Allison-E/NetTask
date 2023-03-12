@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\NetTask.Application\NetTask.Application.csproj" />
+    <ProjectReference Include="..\Domain\NetTask.Domain\NetTask.Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\NetTask.Infrastructure.Persistence\NetTask.Infrastructure.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

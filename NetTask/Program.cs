@@ -11,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMemoryCache();
 builder.Services.AddHealthChecks();
+builder.Services.AddApplicationLayer();
+builder.Services.AddPersistenceLayer();
 #endregion
 
 #region Configure Pipeline
