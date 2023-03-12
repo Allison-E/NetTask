@@ -1,5 +1,4 @@
 ﻿using NetTask.Domain.Common;
-using NetTask.Domain.Models;
 
 namespace NetTask.Infrastructure.Persistence.Contexts;
 public class ApplicationDbContext: DbContext

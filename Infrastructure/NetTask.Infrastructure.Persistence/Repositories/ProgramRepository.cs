@@ -1,6 +1,4 @@
-﻿using NetTask.Domain.Models;
-
-namespace NetTask.Infrastructure.Persistence.Repositories;
+﻿namespace NetTask.Infrastructure.Persistence.Repositories;
 internal class ProgramRepository: IProgramRepository
 {
     private readonly ApplicationDbContext _dbContext;
