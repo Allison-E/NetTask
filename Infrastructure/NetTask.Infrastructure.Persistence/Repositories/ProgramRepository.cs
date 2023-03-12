@@ -24,7 +24,7 @@ internal class ProgramRepository: IProgramRepository
 
     public async Task<List<string>> FindExistingSkillsAsync(string searchQuery)
     {
-        _logger.LogDebug("Fetching skills that contain {query}", searchQuery);
+        _logger.LogDebug("Fetching skills that match {query}", searchQuery);
 
         var skills = (await _dbContext.Programs
             .Where(p => p.KeySkills != null)
@@ -33,6 +33,8 @@ internal class ProgramRepository: IProgramRepository
             .Distinct(StringComparer.CurrentCultureIgnoreCase)
             .Where(s => s.Contains(searchQuery.Trim(), StringComparison.CurrentCultureIgnoreCase))
             .ToList();
+
+        _logger.LogDebug("Found {Count} skills matching {query}", skills.Count, searchQuery);
 
         return skills;
     }
