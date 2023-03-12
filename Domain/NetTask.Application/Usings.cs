@@ -1,1 +1,1 @@
-﻿
+﻿global using NetTask.Domain.Models;
