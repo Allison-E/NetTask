@@ -43,6 +43,11 @@ public class Program: Entity, IAuditableEntity
     public DateTime Modified { get; set; }
 
     /// <summary>
+    /// Concurrency token.
+    /// </summary>
+    public string ETag { get; set; }
+
+    /// <summary>
     /// Additional information 
     /// </summary>
     public AdditionalProgramInformation AdditionalInfo { get; set; }
