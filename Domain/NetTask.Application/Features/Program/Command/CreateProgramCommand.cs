@@ -110,7 +110,7 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
 
     private Domain.Models.Workflow GetDefaultWorkflow(Guid programId)
     {
-        return new Workflow()
+        return new Domain.Models.Workflow()
         {
             ProgramId = programId,
             Stages = new List<WorkflowStage>
