@@ -16,6 +16,10 @@ builder.Services.AddControllers()
         opt.JsonSerializerOptions.AllowTrailingCommas = true;
         opt.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
     });
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMemoryCache();
 builder.Services.AddApiVersioningExtension();
