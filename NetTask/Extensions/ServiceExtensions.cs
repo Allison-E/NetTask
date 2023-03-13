@@ -24,6 +24,8 @@ internal static class ServiceExtensions
                     Email = "emmallison13@gmail.com",
                 }
             });
+            c.DescribeAllParametersInCamelCase();
+            c.SupportNonNullableReferenceTypes();
         });
     }
 

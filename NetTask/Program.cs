@@ -1,4 +1,6 @@
 ﻿using System.Text.Json;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,7 +41,10 @@ app.UseErrorHandler();
 app.UseCors("MyPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();
-app.UseHealthChecks("/health");
+app.UseHealthChecks("/health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 app.MapControllers();
 await dbCreating;
 app.Run();
