@@ -1,8 +1,4 @@
-﻿using NetTask.Domain.Common;
-using NetTask.Domain.Enums;
-using Newtonsoft.Json.Linq;
-
-namespace NetTask.Infrastructure.Persistence.Contexts;
+﻿namespace NetTask.Infrastructure.Persistence.Contexts;
 public class ApplicationDbContext: DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
