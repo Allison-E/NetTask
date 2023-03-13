@@ -73,14 +73,14 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
             ProgramId = programId,
             PersonalInfo = new List<ApplicationQuestion>
             {
-                new() { Message = "First Name", Type = ApplicationQuestionTypes.ShortAnswer, IsHidden = false, IsMandatory = true },
-                new() { Message = "Last Name", Type = ApplicationQuestionTypes.ShortAnswer, IsHidden = false, IsMandatory = true },
-                new() { Message = "Email", Type = ApplicationQuestionTypes.ShortAnswer, IsHidden = false, IsMandatory = true },
-                new() { Message = "Nationality", Type = ApplicationQuestionTypes.ShortAnswer, IsHidden = true, IsMandatory = false, IsInternal = false},
-                new() { Message = "Current Residence", Type = ApplicationQuestionTypes.ShortAnswer, IsHidden = true, IsMandatory = false, IsInternal = false},
-                new() { Message = "ID Number", Type = ApplicationQuestionTypes.Number, IsHidden = true, IsMandatory = false, IsInternal = false},
-                new() { Message = "Date of Birth", Type = ApplicationQuestionTypes.Date, IsHidden = true, IsMandatory = false, IsInternal = false},
-                new() { Message = "Gender", Type = ApplicationQuestionTypes.DropDown, IsHidden = true, IsMandatory = false, IsInternal = false, AdditionalInfo = JObject.FromObject(
+                new() { Message = "First Name", Type = Domain.Enums.ApplicationQuestionTypes.ShortAnswer, IsHidden = false, IsMandatory = true },
+                new() { Message = "Last Name", Type = Domain.Enums.ApplicationQuestionTypes.ShortAnswer, IsHidden = false, IsMandatory = true },
+                new() { Message = "Email", Type = Domain.Enums.ApplicationQuestionTypes.ShortAnswer, IsHidden = false, IsMandatory = true },
+                new() { Message = "Nationality", Type = Domain.Enums.ApplicationQuestionTypes.ShortAnswer, IsHidden = true, IsMandatory = false, IsInternal = false},
+                new() { Message = "Current Residence", Type = Domain.Enums.ApplicationQuestionTypes.ShortAnswer, IsHidden = true, IsMandatory = false, IsInternal = false},
+                new() { Message = "ID Number", Type = Domain.Enums.ApplicationQuestionTypes.Number, IsHidden = true, IsMandatory = false, IsInternal = false},
+                new() { Message = "Date of Birth", Type = Domain.Enums.ApplicationQuestionTypes.Date, IsHidden = true, IsMandatory = false, IsInternal = false},
+                new() { Message = "Gender", Type = Domain.Enums.ApplicationQuestionTypes.DropDown, IsHidden = true, IsMandatory = false, IsInternal = false, AdditionalInfo = JObject.FromObject(
                     new DropDownQuestionInfo()
                     {
                         Options = new List<string> { "Male", "Female", },
@@ -90,9 +90,9 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
             },
             Profile = new List<ApplicationQuestion>
             {
-                new() { Message = "Education", Type = ApplicationQuestionTypes.Paragraph, IsHidden = true, IsInternal = false, IsMandatory = false },
-                new() { Message = "Experience", Type = ApplicationQuestionTypes.Paragraph, IsHidden = false, IsInternal = false, IsMandatory = true },
-                new() { Message = "Resume", Type = ApplicationQuestionTypes.FileUpload, IsHidden = true, IsInternal = false, IsMandatory = false },
+                new() { Message = "Education", Type = Domain.Enums.ApplicationQuestionTypes.Paragraph, IsHidden = true, IsInternal = false, IsMandatory = false },
+                new() { Message = "Experience", Type = Domain.Enums.ApplicationQuestionTypes.Paragraph, IsHidden = false, IsInternal = false, IsMandatory = true },
+                new() { Message = "Resume", Type = Domain.Enums.ApplicationQuestionTypes.FileUpload, IsHidden = true, IsInternal = false, IsMandatory = false },
             },
             AdditionalQuestions = null,
         };
@@ -115,7 +115,7 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
             ProgramId = programId,
             Stages = new List<WorkflowStage>
             {
-                new() { Name = "Applied", IsVisibleToCandidates = true, Type = WorkflowStageTypes.Shortlisting },
+                new() { Name = "Applied", IsVisibleToCandidates = true, Type = Domain.Enums.WorkflowStageTypes.Shortlisting },
             },
         };
     }
