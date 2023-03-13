@@ -1,4 +1,5 @@
-﻿using NetTask.Application.Dtos.Program;
+﻿using NetTask.Application.Dtos.Parameters;
+using NetTask.Application.Dtos.Program;
 using NetTask.Application.Features.Program.Command;
 using NetTask.Application.Features.Program.Query;
 
@@ -40,12 +41,16 @@ public class ProgramsController: ControllerBase
     /// Get program by its ID
     /// </summary>
     /// <param name="id">Program ID</param>
+    /// <param name="parameters">Program parameters</param>
     [HttpGet("{id}", Name = "GetProgramById")]
-    [ProducesResponseType(typeof(ReadProgramDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(PreviewProgramDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetByIdAsync(string id)
+    public async Task<IActionResult> GetByIdAsync(string id, [FromQuery] ProgramParameters parameters)
     {
-        return Ok(await _mediator.Send(new GetProgramByIdQuery(id)));
+        if (parameters.Preview)
+            return Ok(await _mediator.Send(new GetProgramPreviewQuery(id)));
+        else
+            return Ok(await _mediator.Send(new GetProgramByIdQuery(id)));
     }
 
     /// <summary>
