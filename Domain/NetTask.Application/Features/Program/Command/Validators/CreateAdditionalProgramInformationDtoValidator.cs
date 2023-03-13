@@ -11,7 +11,7 @@ internal sealed class CreateAdditionalProgramInformationDtoValidator: AbstractVa
     public CreateAdditionalProgramInformationDtoValidator()
     {
         RuleFor(c => c.TypeId)
-            .IsInEnum().WithMessage(ValidationErrorMessages.ShouldBeInEnum(typeof(ProgramTypes)));
+            .IsInEnum().WithMessage(ValidationErrorMessages.ShouldBeInEnum(typeof(Domain.Enums.ProgramTypes)));
 
         RuleFor(c => c.ApplicationCloseDate)
             .GreaterThan(_endOfToday).WithMessage(ValidationErrorMessages.DateShouldBeInTheFuture);
@@ -20,7 +20,7 @@ internal sealed class CreateAdditionalProgramInformationDtoValidator: AbstractVa
             .SetValidator(new CreateProgramLocationDtoValidator());
 
         RuleFor(c => c.MinQualificationId)
-            .IsInEnum().When(c => c.MinQualificationId != null).WithMessage(ValidationErrorMessages.ShouldBeInEnum(typeof(Qualifications)));
+            .IsInEnum().When(c => c.MinQualificationId != null).WithMessage(ValidationErrorMessages.ShouldBeInEnum(typeof(Domain.Enums.Qualifications)));
 
         RuleFor(c => c.MaxApplications)
             .GreaterThan(0).WithMessage(ValidationErrorMessages.ShouldBeGreaterThan(0));
