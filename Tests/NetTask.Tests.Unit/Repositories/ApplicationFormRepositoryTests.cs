@@ -21,17 +21,17 @@ public class ApplicationFormRepositoryTests: IClassFixture<BaseRepositoryFixture
 
         await CreateApplicationForm(programId);
 
-        var programEntry = await repo.GetForProgramAsync(programId);
+        var applicationFormEntry = await repo.GetForProgramAsync(programId);
 
-        Assert.True(programEntry != null);
+        Assert.True(applicationFormEntry != null);
     }
 
     [Fact]
     public async Task GetForProgramAsync_Should_ReturnNull_When_ApplicationFormForProgramDoesNotExist()
     {
-        var programEntry = await repo.GetForProgramAsync(Guid.NewGuid());
+        var applicationFormEntry = await repo.GetForProgramAsync(Guid.NewGuid());
 
-        Assert.True(programEntry == null);
+        Assert.True(applicationFormEntry == null);
     }
 
     private async Task<Guid> CreateApplicationForm(Guid programId)
