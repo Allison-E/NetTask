@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using NetTask.Infrastructure.Persistence.Repositories;
 
 namespace Microsoft.Extensions.DependencyInjection;
 public static class ServiceExtensions
@@ -14,5 +15,8 @@ public static class ServiceExtensions
         {
             opt.UseCosmos(configuration.GetConnectionString("DefaultConnection")!, databaseName: configuration["AzureCosmos:DatabaseName"]!);
         });
+
+        services.AddScoped<IProgramRepository, ProgramRepository>();
+        services.AddScoped<IApplicationFormRepository, ApplicationFormRepository>();
     }
 }
