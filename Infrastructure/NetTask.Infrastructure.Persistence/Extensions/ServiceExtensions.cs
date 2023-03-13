@@ -18,5 +18,6 @@ public static class ServiceExtensions
 
         services.AddScoped<IProgramRepository, ProgramRepository>();
         services.AddScoped<IApplicationFormRepository, ApplicationFormRepository>();
+        services.AddScoped<IWorkflowRepository, WorkflowRepository>();
     }
 }

@@ -17,24 +17,29 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
     private readonly ILogger<CreateProgramCommandHandler> _logger;
     private readonly IMapper _mapper;
     private readonly IProgramRepository _programRepository;
+    private readonly IWorkflowRepository _workflowRepository;
 
     public CreateProgramCommandHandler(
         IApplicationFormRepository applicationFormRepository,
         ILogger<CreateProgramCommandHandler> logger,
         IMapper mapper,
-        IProgramRepository programRepository)
+        IProgramRepository programRepository,
+        IWorkflowRepository workflowRepository)
     {
         _applicationFormRepository = applicationFormRepository;
         _logger = logger;
         _mapper = mapper;
         _programRepository = programRepository;
+        _workflowRepository = workflowRepository;
     }
 
     public async Task<ReadProgramDto> Handle(CreateProgramCommand request, CancellationToken cancellationToken)
     {
         var program = await CreateProgramAsync(request.Program);
 
-        await CreateApplicationFormAsync(program.Id);
+        await CreateDefaultApplicationFormForProgramAsync(program.Id);
+
+        await CreateDefaultWorkflowForProgramAsync(program.Id);
 
         var readProgramDto = _mapper.Map<ReadProgramDto>(program);
         return readProgramDto;
@@ -50,8 +55,10 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
         return programModel;
     }
 
-    public async Task<Guid> CreateApplicationFormAsync(Guid programId)
+    public async Task<Guid> CreateDefaultApplicationFormForProgramAsync(Guid programId)
     {
+        _logger.LogInformation("Creating default application form for program {ProgramId}", programId);
+
         var form = GetDefaultApplicationForm(programId);
         await _applicationFormRepository.AddAsync(form);
 
@@ -88,6 +95,28 @@ internal class CreateProgramCommandHandler: IRequestHandler<CreateProgramCommand
                 new() { Message = "Resume", Type = ApplicationQuestionTypes.FileUpload, IsHidden = true, IsInternal = false, IsMandatory = false },
             },
             AdditionalQuestions = null,
+        };
+    }
+
+    private async Task<Guid> CreateDefaultWorkflowForProgramAsync(Guid programId)
+    {
+        _logger.LogInformation("Creating default workflow for program {ProgramId}", programId);
+
+        var workflow = GetDefaultWorkflow(programId);
+        await _workflowRepository.AddAsync(workflow);
+
+        return workflow.Id;
+    }
+
+    private Domain.Models.Workflow GetDefaultWorkflow(Guid programId)
+    {
+        return new Domain.Models.Workflow()
+        {
+            ProgramId = programId,
+            Stages = new List<WorkflowStage>
+            {
+                new() { Name = "Applied", IsVisibleToCandidates = true, Type = WorkflowStageTypes.Shortlisting },
+            },
         };
     }
 }

@@ -51,11 +51,6 @@ internal class UpdateApplicationFormCommandHandler: IRequestHandler<UpdateApplic
         {
             throw ex;
         }
-        catch (Exception ex)
-        {
-            _logger.LogWarning(ex, "An error occurred. Message: {Message}", ex.Message);
-            throw new NotFoundException();
-        }
     }
 
     private void UpdateQuestions(ref Domain.Models.ApplicationForm form, UpdateApplicationFormDto request)
