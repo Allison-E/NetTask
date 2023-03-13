@@ -32,4 +32,5 @@ public class ApplicationDbContext: DbContext
 
     public DbSet<Program> Programs { get; set; }
     public DbSet<ApplicationForm> ApplicationForms { get; set; }
+    public DbSet<Workflow> Workflows { get; set; }
 }
