@@ -7,6 +7,7 @@ public class ProgamProfile: Profile
     public ProgamProfile()
     {
         CreateMap<Program, ReadProgramDto>();
+        CreateMap<ReadProgramDto, PreviewProgramDto>();
         CreateMap<CreateProgramDto, Program>();
         CreateMap<UpdateProgramDto, Program>();
 
