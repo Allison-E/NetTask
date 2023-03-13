@@ -21,4 +21,9 @@ internal static class ValidationErrorMessages
     {
         return $"{{PropertyName}} should be greater than {value}.";
     }
+
+    internal static string HasMaximumLength(object value)
+    {
+        return $"{{PropertyName}} should have a maximum length of {value}.";
+    }
 }
