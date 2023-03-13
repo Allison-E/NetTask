@@ -6,7 +6,7 @@
 public class ApplicationForm: Entity
 {
     /// <summary>
-    /// Foreign key of the program that 
+    /// Foreign key of the parent program.
     /// </summary>
     public Guid ProgramId { get; set; }
 
