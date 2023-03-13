@@ -95,10 +95,11 @@ public class ApplicationDbContext: DbContext
         {
             new Workflow()
             {
+                Id = Guid.NewGuid(),
                 ProgramId = programID,
                 Stages = new List<WorkflowStage>
                 {
-                    new() { Id = Guid.NewGuid(), Name = "Applied", IsVisibleToCandidates = true, Type = WorkflowStageTypes.Shortlisting },
+                    new() { Name = "Applied", IsVisibleToCandidates = true, Type = WorkflowStageTypes.Shortlisting },
                 },
             },
         });
