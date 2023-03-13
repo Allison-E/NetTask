@@ -2,7 +2,7 @@
 
 namespace NetTask.Application.Mappings.Actions;
 
-public class CreateAdditionalProgramInformationDto_To_AdditionalProgramInformation_MappingAction
+internal class CreateAdditionalProgramInformationDto_To_AdditionalProgramInformation_MappingAction
     : IMappingAction<CreateAdditionalProgramInformationDto, AdditionalProgramInformation>
 {
     public void Process(CreateAdditionalProgramInformationDto source, AdditionalProgramInformation destination, ResolutionContext context)
@@ -12,7 +12,7 @@ public class CreateAdditionalProgramInformationDto_To_AdditionalProgramInformati
     }
 }
 
-public class UpdateAdditionalProgramInformationDto_To_AdditionalProgramInformation_MappingAction
+internal class UpdateAdditionalProgramInformationDto_To_AdditionalProgramInformation_MappingAction
     : IMappingAction<UpdateAdditionalProgramInformationDto, AdditionalProgramInformation>
 {
     public void Process(UpdateAdditionalProgramInformationDto source, AdditionalProgramInformation destination, ResolutionContext context)
@@ -22,7 +22,7 @@ public class UpdateAdditionalProgramInformationDto_To_AdditionalProgramInformati
     }
 }
 
-public class AdditionalProgramInformation_To_ReadAdditionalProgramInformationDtoMappingAction
+internal class AdditionalProgramInformation_To_ReadAdditionalProgramInformationDtoMappingAction
     : IMappingAction<AdditionalProgramInformation, ReadAdditionalProgramInformationDto>
 {
     public void Process(AdditionalProgramInformation source, ReadAdditionalProgramInformationDto destination, ResolutionContext context)
