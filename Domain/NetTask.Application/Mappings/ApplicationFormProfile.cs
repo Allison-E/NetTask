@@ -22,12 +22,15 @@ internal class ApplicationFormProfile: Profile
 
         // Update application questions DTOs.
         CreateMap<UpdateApplicationFormAdditionalQuestionDto, ApplicationQuestion>()
+            .ForMember(a => a.Type, opt => opt.MapFrom(u => u.TypeId))
             .ForMember(u => u.AdditionalInfo, opt => opt.Ignore());
 
         CreateMap<UpdateApplicationFormPersonalInformationQuestionDto, ApplicationQuestion>()
+            .ForMember(a => a.Type, opt => opt.MapFrom(u => u.TypeId))
             .ForMember(u => u.AdditionalInfo, opt => opt.Ignore());
 
         CreateMap<UpdateApplicationFormProfileQuestionDto, ApplicationQuestion>()
+            .ForMember(a => a.Type, opt => opt.MapFrom(u => u.TypeId))
             .ForMember(u => u.AdditionalInfo, opt => opt.Ignore());
     }
 }
