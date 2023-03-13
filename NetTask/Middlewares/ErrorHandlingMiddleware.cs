@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using NetTask.Application.Exceptions;
+using ValidationException = NetTask.Application.Exceptions.ValidationException;
 
 namespace NetTask.Middlewares;
 
@@ -35,6 +36,13 @@ public class ErrorHandlingMiddleware
             _logger.LogError(e, e.Message);
             response.StatusCode = StatusCodes.Status501NotImplemented;
             errorResponse.Message = e.Message;
+        }
+        catch (ValidationException e)
+        {
+            _logger.LogError(e, e.Message);
+            response.StatusCode = StatusCodes.Status400BadRequest;
+            errorResponse.Message = e.Message;
+            errorResponse.Errors = e.Errors;
         }
         catch (Exception e)
         {
