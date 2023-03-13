@@ -1,4 +1,6 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using System.Text.Json;
+
+var builder = WebApplication.CreateBuilder(args);
 
 #region Configure Services
 builder.Services.AddCors(options => options.AddPolicy("MyPolicy", builder =>
@@ -7,7 +9,13 @@ builder.Services.AddCors(options => options.AddPolicy("MyPolicy", builder =>
         .AllowAnyMethod()
         .AllowAnyHeader();
 }));
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson()
+    .AddJsonOptions(opt =>
+    {
+        opt.JsonSerializerOptions.AllowTrailingCommas = true;
+        opt.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMemoryCache();
 builder.Services.AddApiVersioningExtension();
